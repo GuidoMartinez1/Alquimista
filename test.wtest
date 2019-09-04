@@ -1,0 +1,39 @@
+import ElAlquimista.*
+
+describe "ElAlquimista Test" {
+	
+	
+	
+	test "Un alqumista tiene criterio si no tiene items de combate" {
+		assert.that(alquimista.tieneCriterio())
+	}
+	
+	test "Un alqumista tiene criterio teniendo items de combate" {
+		alquimista.agregarItem(bomba)
+		assert.that(alquimista.tieneCriterio())
+	}
+	test "Un alqumista no criterio teniendo items de combate" {
+		alquimista.agregarItem(pocion)
+		assert.notThat(alquimista.tieneCriterio())
+	}
+	
+	test "Un alquimista es buen explorador" {
+		alquimista.agregarItemDeRecoleccion("gola")
+		alquimista.agregarItemDeRecoleccion("la")
+		alquimista.agregarItemDeRecoleccion("golaaaa")
+		assert.that(alquimista.esBuenExplorador())
+	}
+	
+	
+	test "Un alquimista no es buen explorador" {
+		assert.notThat(alquimista.esBuenExplorador())
+	}
+	
+	test "Capacidad ofensiva de un alquimista es un numero a completar" {
+		
+		alquimista.agregarItem(bomba)
+		alquimista.agregarItem(pocion)
+		
+		assert.equals(100, alquimista.capacidadOfensiva())
+	}
+}
